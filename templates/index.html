@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Telecom Customer Churn Prediction</h1>
+        <form id="churnForm">
+            <label>Account Length:</label>
+            <input type="number" step="any" id="account_length" required><br>
+
+            <label>Total Day Minutes:</label>
+            <input type="number" step="any" id="total_day_minutes" required><br>
+
+            <label>Total Eve Minutes:</label>
+            <input type="number" step="any" id="total_eve_minutes" required><br>
+
+            <label>Total Night Minutes:</label>
+            <input type="number" step="any" id="total_night_minutes" required><br>
+
+            <label>Total Intl Charge:</label>
+            <input type="number" step="any" id="total_intl_charge" required><br>
+
+            <label>Customer Service Calls:</label>
+            <input type="number" step="any" id="customer_service_calls" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        document.getElementById("churnForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Create JSON object from input values
+            const inputData = {
+                "account length": document.getElementById("account_length").value,
+                "total day minutes": document.getElementById("total_day_minutes").value,
+                "total eve minutes": document.getElementById("total_eve_minutes").value,
+                "total night minutes": document.getElementById("total_night_minutes").value,
+                "total intl charge": document.getElementById("total_intl_charge").value,
+                "customer service calls": document.getElementById("customer_service_calls").value
+            };
+
+            // Send JSON data to the server
+            fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(inputData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").textContent = "Prediction: " + (data.prediction || data.error);
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
