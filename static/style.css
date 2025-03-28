@@ -1,48 +1,99 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Smooth Gradient Background */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ff7eb3, #ff758c, #ff4f81, #e63963);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
     text-align: center;
     padding: 20px;
+    margin: 0;
 }
 
+/* Gradient Animation */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Stylish Container */
 .container {
     background: white;
-    padding: 20px;
+    padding: 25px;
     width: 50%;
     margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
 }
 
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Title */
 h1 {
     color: #ff4f81;
+    font-size: 26px;
+    font-weight: 600;
 }
 
+/* Label Styling */
 label {
     font-weight: bold;
+    font-size: 16px;
+    color: #333;
 }
 
+/* Input Fields */
 input {
-    padding: 8px;
+    padding: 10px;
     width: 90%;
     margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    border-radius: 8px;
+    border: 2px solid #ff4f81;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    background: #fff5f8;
+    color: #333;
 }
 
+/* Input Focus Effect */
+input:focus {
+    border-color: #e63963;
+    box-shadow: 0 0 8px rgba(230, 57, 99, 0.5);
+    outline: none;
+}
+
+/* Button */
 button {
-    background: #ff4f81;
+    background: linear-gradient(to right, #ff4f81, #e63963);
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
     cursor: pointer;
     width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 10px rgba(255, 79, 129, 0.3);
 }
 
+/* Button Hover Effect */
 button:hover {
-    background: #e63963;
+    background: linear-gradient(to right, #e63963, #c02753);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(230, 57, 99, 0.4);
 }
 
+/* Subtitle */
 h2 {
     color: #333;
+    font-size: 20px;
+    font-weight: bold;
 }
